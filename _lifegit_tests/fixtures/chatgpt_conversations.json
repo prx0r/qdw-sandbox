@@ -1,0 +1,177 @@
+[
+  {
+    "id": "conv-1",
+    "title": "Build and life notes",
+    "create_time": 1735689600,
+    "update_time": 1735693200,
+    "current_node": "n5",
+    "mapping": {
+      "n0": {
+        "id": "n0",
+        "parent": null,
+        "children": [
+          "n1"
+        ],
+        "message": null
+      },
+      "n1": {
+        "id": "n1",
+        "parent": "n0",
+        "children": [
+          "n2"
+        ],
+        "message": {
+          "id": "m1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1735689600,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "I have an idea: what if we build a local-first timeline from all my AI chats? I want to recover old ideas and projects."
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n2": {
+        "id": "n2",
+        "parent": "n1",
+        "children": [
+          "n3"
+        ],
+        "message": {
+          "id": "m2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1735689660,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "You could normalize exports and retain provenance."
+            ]
+          },
+          "metadata": {
+            "model_slug": "gpt-test"
+          }
+        }
+      },
+      "n3": {
+        "id": "n3",
+        "parent": "n2",
+        "children": [
+          "n4"
+        ],
+        "message": {
+          "id": "m3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1738281600,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Why is it so hard to find the product ideas I discussed months ago? This is a recurring problem. Could we make Idea Cemetery?"
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "n4": {
+        "id": "n4",
+        "parent": "n3",
+        "children": [
+          "n5"
+        ],
+        "message": {
+          "id": "m4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1738281660,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Yes, derive idea objects and link them to evidence."
+            ]
+          },
+          "metadata": {
+            "model_slug": "gpt-test"
+          }
+        }
+      },
+      "n5": {
+        "id": "n5",
+        "parent": "n4",
+        "children": [],
+        "message": {
+          "id": "m5",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1740960000,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "I finished the first parser and shipped the project report. I realised the provenance layer matters more than a pretty dashboard."
+            ]
+          },
+          "metadata": {}
+        }
+      }
+    }
+  },
+  {
+    "id": "conv-2",
+    "title": "Career research",
+    "create_time": 1743638400,
+    "update_time": 1743639000,
+    "current_node": "x2",
+    "mapping": {
+      "x1": {
+        "id": "x1",
+        "parent": null,
+        "children": [
+          "x2"
+        ],
+        "message": {
+          "id": "m6",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1743638400,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "I am researching agent evaluation benchmarks and building a Python API. What should I test first?"
+            ]
+          },
+          "metadata": {}
+        }
+      },
+      "x2": {
+        "id": "x2",
+        "parent": "x1",
+        "children": [],
+        "message": {
+          "id": "m7",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1743638460,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Start with provenance and failure fixtures."
+            ]
+          },
+          "metadata": {
+            "model_slug": "gpt-test"
+          }
+        }
+      }
+    }
+  }
+]

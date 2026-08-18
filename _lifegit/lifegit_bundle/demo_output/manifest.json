@@ -1,0 +1,21 @@
+{
+  "stats": {
+    "source_artifacts": 2,
+    "conversations": 3,
+    "messages": 10,
+    "semantic_objects": 18,
+    "events": 7,
+    "tensions": 1
+  },
+  "reports": [
+    "index.html",
+    "ideas.html",
+    "questions.html",
+    "problems.html",
+    "career.html",
+    "timeline.html",
+    "pastme.html",
+    "diff.html"
+  ],
+  "privacy": "local/private by default"
+}

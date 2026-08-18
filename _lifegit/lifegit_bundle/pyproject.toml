@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lifegit-wrapped-suite"
+version = "0.1.0"
+description = "Local-first provenance-backed infrastructure for LifeGit, Wrapped, Idea Cemetery, My Questions and CareerGit"
+requires-python = ">=3.11"
+authors = [{name = "QDW / LifeGit"}]
+license = {text = "MIT"}
+dependencies = []
+
+[project.scripts]
+lifegit = "lifegit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,1 @@
+{"name": "WrappedAPI", "type": "agent_interface", "parent": "LifeGit", "interface": "read-only HTTP JSON endpoints over local graph"}

@@ -1,0 +1,33 @@
+[
+  {
+    "uuid": "claude-1",
+    "name": "More product ideas",
+    "created_at": "2025-05-01T12:00:00Z",
+    "updated_at": "2025-05-01T12:05:00Z",
+    "chat_messages": [
+      {
+        "uuid": "c1",
+        "sender": "human",
+        "created_at": "2025-05-01T12:00:00Z",
+        "text": "What if CareerGit could create an evidence-backed CV from project history?"
+      },
+      {
+        "uuid": "c2",
+        "sender": "assistant",
+        "created_at": "2025-05-01T12:00:20Z",
+        "text": "Keep raw private history separate from public claims."
+      },
+      {
+        "uuid": "c3",
+        "sender": "human",
+        "created_at": "2025-05-01T12:04:00Z",
+        "content": [
+          {
+            "type": "text",
+            "text": "I need to build a work-safe projection and prove every claim from repository or research evidence."
+          }
+        ]
+      }
+    ]
+  }
+]

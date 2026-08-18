@@ -1,0 +1,117 @@
+{
+  "as_of": "2025-03-15",
+  "conversations": [
+    {
+      "conversation_id": "conv-1",
+      "provider": "chatgpt",
+      "title": "Build and life notes",
+      "created_at": "2025-01-01T00:00:00+00:00"
+    }
+  ],
+  "semantic_objects": [
+    {
+      "object_id": "sem_113b84bb7ccc5f26744bf8c9",
+      "object_type": "QUESTION",
+      "canonical_text": "I have an idea: what if we build a local-first timeline from all my AI chats?",
+      "first_observed_at": "2025-01-01T00:00:00+00:00",
+      "confidence": 0.98,
+      "evidence_message_id": "m1"
+    },
+    {
+      "object_id": "sem_6b6018cf597cc009204593ff",
+      "object_type": "IDEA",
+      "canonical_text": "I have an idea: what if we build a local-first timeline from all my AI chats? I want to recover old ideas and projects.",
+      "first_observed_at": "2025-01-01T00:00:00+00:00",
+      "confidence": 0.78,
+      "evidence_message_id": "m1"
+    },
+    {
+      "object_id": "sem_116c36159a28867542dfec92",
+      "object_type": "GOAL",
+      "canonical_text": "I have an idea: what if we build a local-first timeline from all my AI chats? I want to recover old ideas and projects.",
+      "first_observed_at": "2025-01-01T00:00:00+00:00",
+      "confidence": 0.72,
+      "evidence_message_id": "m1"
+    },
+    {
+      "object_id": "sem_e4b9799f52bb5173dd3fae5f",
+      "object_type": "QUESTION",
+      "canonical_text": "Why is it so hard to find the product ideas I discussed months ago?",
+      "first_observed_at": "2025-01-31T00:00:00+00:00",
+      "confidence": 0.98,
+      "evidence_message_id": "m3"
+    },
+    {
+      "object_id": "sem_cee99d9a84e6692dca7730fc",
+      "object_type": "QUESTION",
+      "canonical_text": "This is a recurring problem. Could we make Idea Cemetery?",
+      "first_observed_at": "2025-01-31T00:00:00+00:00",
+      "confidence": 0.98,
+      "evidence_message_id": "m3"
+    },
+    {
+      "object_id": "sem_99c765f937e337442164da87",
+      "object_type": "IDEA",
+      "canonical_text": "Why is it so hard to find the product ideas I discussed months ago? This is a recurring problem. Could we make Idea Cemetery?",
+      "first_observed_at": "2025-01-31T00:00:00+00:00",
+      "confidence": 0.78,
+      "evidence_message_id": "m3"
+    },
+    {
+      "object_id": "sem_657c1c7a2c7098504a0006cd",
+      "object_type": "PROBLEM",
+      "canonical_text": "Why is it so hard to find the product ideas I discussed months ago? This is a recurring problem. Could we make Idea Cemetery?",
+      "first_observed_at": "2025-01-31T00:00:00+00:00",
+      "confidence": 0.78,
+      "evidence_message_id": "m3"
+    },
+    {
+      "object_id": "sem_8008fa883b7b0476abde97b0",
+      "object_type": "PROJECT",
+      "canonical_text": "Why is it so hard to find the product ideas I discussed months ago? This is a recurring problem. Could we make Idea Cemetery?",
+      "first_observed_at": "2025-01-31T00:00:00+00:00",
+      "confidence": 0.78,
+      "evidence_message_id": "m3"
+    },
+    {
+      "object_id": "sem_0a070e749e426f633a912d9a",
+      "object_type": "PROJECT",
+      "canonical_text": "I finished the first parser and shipped the project report. I realised the provenance layer matters more than a pretty dashboard.",
+      "first_observed_at": "2025-03-03T00:00:00+00:00",
+      "confidence": 0.78,
+      "evidence_message_id": "m5"
+    },
+    {
+      "object_id": "sem_a0a572cf174909627db35ae5",
+      "object_type": "DISCOVERY",
+      "canonical_text": "I finished the first parser and shipped the project report. I realised the provenance layer matters more than a pretty dashboard.",
+      "first_observed_at": "2025-03-03T00:00:00+00:00",
+      "confidence": 0.72,
+      "evidence_message_id": "m5"
+    },
+    {
+      "object_id": "sem_322b89029a9c135cc64a3769",
+      "object_type": "ACHIEVEMENT",
+      "canonical_text": "I finished the first parser and shipped the project report. I realised the provenance layer matters more than a pretty dashboard.",
+      "first_observed_at": "2025-03-03T00:00:00+00:00",
+      "confidence": 0.72,
+      "evidence_message_id": "m5"
+    }
+  ],
+  "tensions": [
+    {
+      "tension_id": "tension_2fbd40d7ce925771629bb475",
+      "space_id": "life:default",
+      "tension_type": "EXPLICIT_PROBLEM",
+      "current_state": "Why is it so hard to find the product ideas I discussed months ago? This is a recurring problem. Could we make Idea Cemetery?",
+      "desired_state": null,
+      "recurrence": 0.2,
+      "intensity": 0.5,
+      "confidence": 0.6,
+      "first_observed_at": "2025-01-31T00:00:00+00:00",
+      "last_observed_at": "2025-01-31T00:00:00+00:00",
+      "evidence_count": 1,
+      "attributes_json": "{\"object_ids\": [\"sem_657c1c7a2c7098504a0006cd\"]}"
+    }
+  ]
+}

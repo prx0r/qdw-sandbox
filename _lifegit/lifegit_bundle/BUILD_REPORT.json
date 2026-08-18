@@ -1,0 +1,284 @@
+{
+  "bundle": "lifegit-wrapped-suite",
+  "version": "0.1.0",
+  "built_at": "2026-08-19",
+  "test_command": "PYTHONPATH=src python -m unittest discover -s tests -v",
+  "tests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "smoke_tests": [
+    "ChatGPT mapping/current_node export parsed",
+    "Claude chat_messages export parsed",
+    "multi-provider import into one SQLite DB",
+    "deterministic semantic extraction",
+    "all static product reports generated",
+    "LLM enrichment batch + provenance-checked apply",
+    "Past Me cutoff snapshot",
+    "QDW private-space JSONL export",
+    "read-only local API queries"
+  ],
+  "known_constraints": [
+    "Container had no outbound DNS, so public repositories were inspected through the GitHub connector rather than cloned locally.",
+    "V0 semantic extraction is conservative deterministic scaffolding; use llm-batch/apply-enrichment after validating a real export.",
+    "CareerGit output is a candidate work projection and requires explicit human review before sharing.",
+    "No authentication layer is included; local API binds to 127.0.0.1 by default."
+  ],
+  "files": [
+    {
+      "path": "EXISTING_PROJECTS.md",
+      "sha256": "9c0594f4244113964d843b08b390fb94d924d8a27996b7d091b14134d62f6228",
+      "bytes": 2633
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "21c75952063a01d575459ce84a706a121ccb8e49fc3dbbe41a07d01c9f008a77",
+      "bytes": 1083
+    },
+    {
+      "path": "README.md",
+      "sha256": "fc140ccae1f465b2189c35caa2420fc0c4eaef03971d444b91f35e36ed1057a7",
+      "bytes": 4497
+    },
+    {
+      "path": "demo.db",
+      "sha256": "a9e1f5412724debb496f4aebec64a7ef00cdf218de9ec6a5038899dd7c214a6e",
+      "bytes": 110592
+    },
+    {
+      "path": "demo_output/career.html",
+      "sha256": "fb40b2c8d59458069719f6c9ec9822480b544dc41032a26d35b2ef1f2f7d7791",
+      "bytes": 2576
+    },
+    {
+      "path": "demo_output/diff.html",
+      "sha256": "aa2738920a05696e9abe42d5b2a7618ba5d346cac6b81bd565f6a1ffe5704eb7",
+      "bytes": 1989
+    },
+    {
+      "path": "demo_output/enrichment_input.jsonl",
+      "sha256": "5fa5db62720707c8b0d2a1d6a17959eaf11ccd02f43587b836a869020197b62e",
+      "bytes": 5671
+    },
+    {
+      "path": "demo_output/enrichment_input.jsonl.schema.json",
+      "sha256": "c0f0470d4baf8aeec44bf8612ae60577a9173e0f2581572a8283267e385168d9",
+      "bytes": 872
+    },
+    {
+      "path": "demo_output/ideas.html",
+      "sha256": "2dc299a321066b53642eb102be76f75907b4d258cdd057dab180eaef0d5e2e50",
+      "bytes": 2258
+    },
+    {
+      "path": "demo_output/index.html",
+      "sha256": "bbd52cbd2f65d31661a3a4ea2c301d88ff6f6c9f962388d66a785bc261fcd35a",
+      "bytes": 2707
+    },
+    {
+      "path": "demo_output/manifest.json",
+      "sha256": "add39a9110f164a68d434c5956f14f5febc758ad2138799cc845280de53fc8fa",
+      "bytes": 369
+    },
+    {
+      "path": "demo_output/past_me_2025-03-15.json",
+      "sha256": "ca8cc102e3a4409a336939d0de6195f3be706e5eaf14c13aad0a292e9854c6ad",
+      "bytes": 4723
+    },
+    {
+      "path": "demo_output/pastme.html",
+      "sha256": "c6ce19346aaa95f154144df85dcce80e7bf948e940449a6eede8f314bf2c2026",
+      "bytes": 4462
+    },
+    {
+      "path": "demo_output/problems.html",
+      "sha256": "bd9b7541501e86cb86a7af299f7fe7089cba81b11e89e3494c884354be3caead",
+      "bytes": 1703
+    },
+    {
+      "path": "demo_output/qdw_personal.jsonl",
+      "sha256": "013dc9fbca559fbc4fd869c7309bdda0f5fc7b7bd1a94b27bf6a0e19f8b150a3",
+      "bytes": 8399
+    },
+    {
+      "path": "demo_output/questions.html",
+      "sha256": "ff6a5dc9d96821820d24234cd9b92a84b97edf1ade0eab239695be04b7f9278f",
+      "bytes": 2252
+    },
+    {
+      "path": "demo_output/semantic_objects.json",
+      "sha256": "8c689d6da6e10e7a56a06264817be477c04115783759266564457cb45d8b9709",
+      "bytes": 14119
+    },
+    {
+      "path": "demo_output/timeline.html",
+      "sha256": "b1ea7a03d8c8598c12ceff2e6ff670933219235342237645bd5108e4b4559df7",
+      "bytes": 4772
+    },
+    {
+      "path": "product_manifests/careergit.json",
+      "sha256": "b60510d2d7621ac5e7f8d550431c543bef07d6df2ecb7577f6a7f8d3a17ef333",
+      "bytes": 145
+    },
+    {
+      "path": "product_manifests/idea-cemetery.json",
+      "sha256": "9bc978c6b963221fed8157030e6fee179e1c097be49da23ab76184ba9e65e5fe",
+      "bytes": 132
+    },
+    {
+      "path": "product_manifests/life-wrapped.json",
+      "sha256": "5ab52ac81e8c17af9da107331d767727a67a1687c64c312bf2a61976f77ab89f",
+      "bytes": 139
+    },
+    {
+      "path": "product_manifests/lifegit.json",
+      "sha256": "721d1e4dc8cdc45d73b15faba19cd6941b50ed64962da4407be9a0e99169a7d8",
+      "bytes": 198
+    },
+    {
+      "path": "product_manifests/meapi.json",
+      "sha256": "fd489fbd9e78591e51f48f23b4cd0b5064ce2a27111bb9a30b83deaaa2293202",
+      "bytes": 145
+    },
+    {
+      "path": "product_manifests/memory-diff.json",
+      "sha256": "df7947bb174b33b82179590a8b2a08cc7009c430c3d021c4ba03f77ebba455a7",
+      "bytes": 113
+    },
+    {
+      "path": "product_manifests/my-questions.json",
+      "sha256": "cb7381fc746168f0be4a5837835e0b6f2aed6575a1ce2b14f024cd37e7c0b2db",
+      "bytes": 108
+    },
+    {
+      "path": "product_manifests/past-me.json",
+      "sha256": "afe803246528cacab834cd57f311da4bbe6e42d5a81840e62fa8121140e884cc",
+      "bytes": 149
+    },
+    {
+      "path": "product_manifests/problem-ledger.json",
+      "sha256": "06679f80d1eecb3ab03cb1ffdfd510db0335f5f50d2f438989685985229a20b4",
+      "bytes": 131
+    },
+    {
+      "path": "product_manifests/wrappedapi.json",
+      "sha256": "2836c2f1c00d0a64a3ae78596904a179d8fb5f80e4a31622b97a2d4389c1e637",
+      "bytes": 133
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "e0c6c1b16e2a87da71aef3f2b77992ea9105d3aa078b2b5e6f17c16f87936658",
+      "bytes": 470
+    },
+    {
+      "path": "qdw_patch/README.md",
+      "sha256": "1d29d39ee498b7d8e8f6343342b469a4ced4a9192e189b721ac0734d81a6b5aa",
+      "bytes": 1382
+    },
+    {
+      "path": "qdw_patch/migrations/0003_semantic_core.sql",
+      "sha256": "9a06ace0f21abba3fd4ac70ea593c790e02d08ecc112d7b19899119c9a286e2e",
+      "bytes": 3196
+    },
+    {
+      "path": "qdw_patch/migrations/0004_rights_resolution.sql",
+      "sha256": "628dca26704c7fb8fb094a3ff6914a5c05bfd81fdc448439bac62f51f5906fc8",
+      "bytes": 1487
+    },
+    {
+      "path": "qdw_patch/migrations/0005_reports.sql",
+      "sha256": "f87caa357a6954a6ccdb2c2d27ef6f2ab8620776eafca77d54ea2015a65cbb3a",
+      "bytes": 834
+    },
+    {
+      "path": "src/lifegit/__init__.py",
+      "sha256": "81366ea7c63ab23d0dd436b6b953ee31aed4fac2d403244e587a4327485e3f92",
+      "bytes": 81
+    },
+    {
+      "path": "src/lifegit/api.py",
+      "sha256": "d341c27fdc88141166f01ee3780c1f9edb41f203319cb603e4454b8ed4cd3138",
+      "bytes": 2809
+    },
+    {
+      "path": "src/lifegit/cli.py",
+      "sha256": "0fea1800768e2e43fca1d110b0a65b89efe33116fcef373c2aa763bff36e479a",
+      "bytes": 3967
+    },
+    {
+      "path": "src/lifegit/db.py",
+      "sha256": "b866704a9fe9d0cd3b63d48107cfaf3c83deaefaac3a2d0f20ec3b67f3501dd6",
+      "bytes": 5728
+    },
+    {
+      "path": "src/lifegit/enrichment.py",
+      "sha256": "64188823a28563638c5cf3dadbabce81eac35255d32e15319fa9af2c8f23abd7",
+      "bytes": 4761
+    },
+    {
+      "path": "src/lifegit/extract.py",
+      "sha256": "25344e1838cf5e9b0c3f79da5f7b1ca15a4d38d7166cdb69cb8e7ef93be47f42",
+      "bytes": 7132
+    },
+    {
+      "path": "src/lifegit/models.py",
+      "sha256": "4a9cb91ab57db3aa35ca1d53095946ee5dab6c4593572c47e151ddb1d9293b1c",
+      "bytes": 695
+    },
+    {
+      "path": "src/lifegit/pastme.py",
+      "sha256": "bf48c06db0ba2bc651812dd11ff58da9b88c831af261668832cd34874f6412aa",
+      "bytes": 1435
+    },
+    {
+      "path": "src/lifegit/providers/__init__.py",
+      "sha256": "008ffac03782323d46765505a8ce179127c2269854aa92f2f09fc6c4258798dd",
+      "bytes": 140
+    },
+    {
+      "path": "src/lifegit/providers/base.py",
+      "sha256": "95b9796732007475b8684eed1a7aef439ba9f5cfd78e4e85930edaebb486d20d",
+      "bytes": 397
+    },
+    {
+      "path": "src/lifegit/providers/chatgpt.py",
+      "sha256": "a71f4ecf7196c793043af3d4c5946da1721cefe3ab6910bca84ee5cb61aabf64",
+      "bytes": 4199
+    },
+    {
+      "path": "src/lifegit/providers/claude.py",
+      "sha256": "e84739f6bc0bd43f61077537d26aadfdf3a999519ea20d576898eeda6010a16d",
+      "bytes": 2486
+    },
+    {
+      "path": "src/lifegit/qdw_export.py",
+      "sha256": "c674b2b552521023b2a7e5b3db4a581133634198408a3276d478fc32af73cf7d",
+      "bytes": 2547
+    },
+    {
+      "path": "src/lifegit/reports.py",
+      "sha256": "456aed2053d8539f051e66a96feca0504bf707f722be4a6c3062aca5f21c7c63",
+      "bytes": 9301
+    },
+    {
+      "path": "src/lifegit/util.py",
+      "sha256": "a8fd37c1f3b838f5a2254349b7a38bb17b7bf03d8b0a468dc68475ca9dafe507",
+      "bytes": 3191
+    },
+    {
+      "path": "tests/fixtures/chatgpt_conversations.json",
+      "sha256": "633648e840a3196b50ef6e38557d02b0becb4e0d3aa12d2d8daa8f673195c514",
+      "bytes": 4139
+    },
+    {
+      "path": "tests/fixtures/claude_conversations.json",
+      "sha256": "84fc4a036aab4a7855d4cfd74a8dbc3ed01d4d402cf5084bf87c6bc4c374b2dd",
+      "bytes": 890
+    },
+    {
+      "path": "tests/test_suite.py",
+      "sha256": "fd7f8ed8694134bc05366155a86cfb8b0450d812b58321416ce2c4fe51f32f7b",
+      "bytes": 5112
+    }
+  ]
+}

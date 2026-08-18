@@ -1,0 +1,1 @@
+{"name":"Past Me","type":"temporal_projection","parent":"LifeGit","projection":"query graph restricted to information observed before a chosen date"}

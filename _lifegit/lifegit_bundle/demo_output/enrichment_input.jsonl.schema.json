@@ -1,0 +1,24 @@
+{
+  "version": "lifegit-semantic-v0.1",
+  "instructions": [
+    "Extract only information explicitly supported by the user's message.",
+    "Do not diagnose personality, mental health, relationships, or motives.",
+    "Do not invent outcomes that are not stated.",
+    "Every object must quote/closely paraphrase the supported user statement and retain message_id.",
+    "Use only allowed object_type values.",
+    "confidence is confidence in extraction, not importance.",
+    "work_relevance measures whether the statement can plausibly belong in a work history; it is not permission to publish."
+  ],
+  "object_schema": {
+    "message_id": "string",
+    "objects": [
+      {
+        "object_type": "enum",
+        "canonical_text": "string <= 700 chars",
+        "confidence": "0..1",
+        "work_relevance": "0..1",
+        "attributes": "object"
+      }
+    ]
+  }
+}
