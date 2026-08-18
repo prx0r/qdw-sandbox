@@ -111,7 +111,7 @@ class NativeLocalBackend(DataRightsBackend):
                 """INSERT INTO data_rights_log
                    (log_id, licence_id, asset_id, granted, reason, checked_at)
                    VALUES (?, ?, ?, ?, ?, ?)""",
-                (new_id("drlog"), cr.licence_id, cr.asset_id, 1 if cr.granted else 0, cr.reason, cr.checked_at),
+                (new_id("drlog"), cr.licence_id or "none", cr.asset_id, 1 if cr.granted else 0, cr.reason, cr.checked_at),
             )
 
 

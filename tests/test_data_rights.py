@@ -6,7 +6,9 @@ from sandbox.types import DataLicence, LicenseOperation, RightsBackend, new_id
 
 
 def make_db(tmp_path):
-    return Database(str(tmp_path / "test.db"))
+    db = Database(str(tmp_path / "test.db"))
+    db.migrate()
+    return db
 
 
 def test_register_and_list_licence(tmp_path):

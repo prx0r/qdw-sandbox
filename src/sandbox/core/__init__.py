@@ -35,7 +35,7 @@ class Database:
             yield con
 
     def migrate(self):
-        migrations_dir = Path(__file__).parent.parent.parent / "migrations"
+        migrations_dir = Path(__file__).parent.parent.parent.parent / "migrations"
         with self.connect() as con:
             con.execute("""
                 CREATE TABLE IF NOT EXISTS schema_versions (

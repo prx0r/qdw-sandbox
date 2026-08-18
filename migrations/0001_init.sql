@@ -65,12 +65,10 @@ CREATE TABLE IF NOT EXISTS bounty_gates (
 CREATE TABLE IF NOT EXISTS bounty_certificates (
     certificate_id TEXT PRIMARY KEY,
     bounty_id TEXT NOT NULL,
-    submission_id TEXT NOT NULL,
+    submission_id TEXT NOT NULL DEFAULT '',
     artifact_hashes_json TEXT NOT NULL DEFAULT '[]',
     gate_hashes_json TEXT NOT NULL DEFAULT '[]',
     ledger_root TEXT NOT NULL DEFAULT '',
     source_commit TEXT NOT NULL DEFAULT '',
-    issued_at TEXT NOT NULL,
-    FOREIGN KEY (bounty_id) REFERENCES bounty_definitions(bounty_id),
-    FOREIGN KEY (submission_id) REFERENCES bounty_submissions(submission_id)
+    issued_at TEXT NOT NULL
 );

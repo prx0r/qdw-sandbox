@@ -232,6 +232,7 @@ class ResourceNeed:
     budget_usd: float
     deadline_seconds: int
     quality_floor: float = 0.7
+    created_at: str = field(default_factory=utc_now)
 
 
 @dataclass(frozen=True)
@@ -244,6 +245,7 @@ class ResourceAllocation:
     expected_confidence: float
     expected_time_seconds: int
     reason_codes: tuple[str, ...] = ()
+    allocated_at: str = field(default_factory=utc_now)
 
 
 # ── Integration with QDW ─────────────────────────────────────────────────

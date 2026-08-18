@@ -4,7 +4,8 @@ from sandbox.system import SandboxSystem
 
 
 def test_doctor(tmp_path):
-    system = SandboxSystem(str(tmp_path / "test.db"))
+    db_path = str(tmp_path / "test.db")
+    system = SandboxSystem(db_path)
     result = system.doctor()
     assert result["ok"] is True
     assert "bounty_definitions" in result["tables"]

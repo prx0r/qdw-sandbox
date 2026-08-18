@@ -12,7 +12,9 @@ from sandbox.types import (
 
 
 def make_db(tmp_path):
-    return Database(str(tmp_path / "test.db"))
+    db = Database(str(tmp_path / "test.db"))
+    db.migrate()
+    return db
 
 
 def test_create_and_list_bounty(tmp_path):
@@ -97,11 +99,22 @@ def test_evaluate_bounty(tmp_path):
 
 def test_add_gate_and_certificate(tmp_path):
     db = make_db(tmp_path)
+    reg = BountyRegistry(db)
     verifier = BountyVerifier(db)
-    bounty_id = new_id("bounty")
-    gate = verifier.add_gate(bounty_id, "format", "python -m pytest tests/", 0, 300)
-    gates = verifier.get_gates(bounty_id)
+    spec = BountySpec(
+        bounty_id=new_id("bounty"),
+        bounty_type=BountyType.EVIDENCE,
+        title="Gate test",
+        description="desc",
+        requirement="req",
+        budget_usd=10.0,
+        deadline_seconds=600,
+        submission_format=SubmissionFormat(),
+    )
+    reg.create_bounty(spec)
+    gate = verifier.add_gate(spec.bounty_id, "format", "python -m pytest tests/", 0, 300)
+    gates = verifier.get_gates(spec.bounty_id)
     assert len(gates) == 1
 
-    cert = verifier.issue_certificate(bounty_id, "sub_1", ["hash1"], ["ghash1"], "root1", "commit1")
+    cert = verifier.issue_certificate(spec.bounty_id, "sub_1", ["hash1"], ["ghash1"], "root1", "commit1")
     assert cert.certificate_id.startswith("cert_")

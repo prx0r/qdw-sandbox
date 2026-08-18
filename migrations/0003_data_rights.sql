@@ -20,10 +20,9 @@ CREATE TABLE IF NOT EXISTS data_licences (
 
 CREATE TABLE IF NOT EXISTS data_rights_log (
     log_id TEXT PRIMARY KEY,
-    licence_id TEXT NOT NULL,
+    licence_id TEXT NOT NULL DEFAULT '',
     asset_id TEXT NOT NULL,
     granted INTEGER NOT NULL,
     reason TEXT NOT NULL DEFAULT '',
-    checked_at TEXT NOT NULL,
-    FOREIGN KEY (licence_id) REFERENCES data_licences(licence_id)
+    checked_at TEXT NOT NULL
 );

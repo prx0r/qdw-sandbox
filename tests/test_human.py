@@ -6,7 +6,9 @@ from sandbox.types import WorkerCapability
 
 
 def make_db(tmp_path):
-    return Database(str(tmp_path / "test.db"))
+    db = Database(str(tmp_path / "test.db"))
+    db.migrate()
+    return db
 
 
 def test_register_worker(tmp_path):
