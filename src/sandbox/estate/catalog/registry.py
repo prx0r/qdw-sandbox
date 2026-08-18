@@ -18,7 +18,9 @@ class EstateCatalog:
             for cid,v in comps.items():
                 payload={'component_id':cid,**v}; h=sha256_obj(payload)
                 c.execute("""INSERT INTO estate_components(component_id,kind,canonical_repo,status,manifest_json,manifest_hash,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?) ON CONFLICT(component_id) DO UPDATE SET kind=excluded.kind,canonical_repo=excluded.canonical_repo,status=excluded.status,manifest_json=excluded.manifest_json,manifest_hash=excluded.manifest_hash,updated_at=excluded.updated_at""",(cid,v.get('kind','service'),v.get('repo'),'ACTIVE',canonical_bytes(payload).decode(),h,now,now))
-            c.execute('DELETE FROM estate_dependencies')
+            # Only delete dependencies for components being upserted, not all dependencies
+            for cid in comps:
+                c.execute('DELETE FROM estate_dependencies WHERE consumer_component_id=?',(cid,))
             for cid,v in comps.items():
                 for dep in v.get('depends_on',[]):
                     c.execute('INSERT INTO estate_dependencies(consumer_component_id,provider_component_id,capability,required) VALUES(?,?,?,?)',(cid,dep['provider'],dep['capability'],1 if dep.get('required',True) else 0))

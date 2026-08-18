@@ -7,7 +7,6 @@ from .hashing import canonical_bytes, sha256_obj
 from .contracts import CapabilityRequest, ResourceDescriptor, RouteDecision, ExecutionEpisodeRecord, EpisodeStatus, ResourceProfile, ContextPackManifest
 
 def now()->str: return datetime.now(UTC).isoformat()
-def nid(prefix:str)->str: return f"{prefix}_{uuid.uuid4().hex[:16]}"
 
 class EstateStore:
     """Additive Estate persistence. Accepts QDW Database or a sqlite path for tests."""
@@ -96,8 +95,20 @@ class EstateStore:
             old=c.execute('SELECT * FROM estate_resource_profiles WHERE resource_id=? AND capability=?',(e['resource_id'],capability)).fetchone()
             if old:
                 n=old['sample_count']+1; vs=old['verified_success_count']+(1 if success else 0); a=old['success_alpha']+(1 if success else 0); b=old['success_beta']+(0 if success else 1)
-                mc=((old['mean_cost_usd'] or 0)*old['sample_count']+(e['cost'] or 0))/n
-                mw=None if e['wall_ms'] is None and old['mean_wall_ms'] is None else (((old['mean_wall_ms'] or 0)*old['sample_count']+(e['wall_ms'] or 0))/n)
+                # Only update means when new observation has a value; skip None to avoid biasing mean toward 0
+                new_cost=e['cost']; new_wall=e['wall_ms']
+                if new_cost is not None and old['mean_cost_usd'] is not None:
+                    mc=((old['mean_cost_usd'])*old['sample_count']+new_cost)/n
+                elif new_cost is not None:
+                    mc=new_cost
+                else:
+                    mc=old['mean_cost_usd']
+                if new_wall is not None and old['mean_wall_ms'] is not None:
+                    mw=((old['mean_wall_ms'])*old['sample_count']+new_wall)/n
+                elif new_wall is not None:
+                    mw=new_wall
+                else:
+                    mw=old['mean_wall_ms']
                 fd=json.loads(old['failure_distribution_json'] or '{}')
                 if failure_class: fd[failure_class]=fd.get(failure_class,0)+1
                 c.execute("""UPDATE estate_resource_profiles SET sample_count=?,verified_success_count=?,success_alpha=?,success_beta=?,mean_cost_usd=?,mean_wall_ms=?,failure_distribution_json=?,updated_at=? WHERE resource_id=? AND capability=?""",(n,vs,a,b,mc,mw,json.dumps(fd,sort_keys=True),now(),e['resource_id'],capability))
