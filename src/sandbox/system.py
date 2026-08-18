@@ -14,6 +14,7 @@ from sandbox.intelligence import TensionSynthesizer
 from sandbox.oracle import StackOracle
 from sandbox.personal import PersonalExtractor, PersonalIngestor, PersonalPrivacy, PersonalReports, PersonalTimeline
 from sandbox.r2 import R2Storage
+from sandbox.estate import EstateServices
 from sandbox.reports import ReportRegistry, ShareRegistry
 from sandbox.rights import GrantRegistry
 from sandbox.semantic import SemanticObjectStore
@@ -96,6 +97,9 @@ class SandboxSystem:
         # Reports
         self.report_registry = ReportRegistry(self.db)
         self.share_registry = ShareRegistry(self.db)
+
+        # Estate (resource orchestration, routing, verification)
+        self.estate = EstateServices(self)
 
         # Seed default ontology
         seed_default_ontology(self.ontology)

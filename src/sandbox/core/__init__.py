@@ -29,9 +29,9 @@ class Database:
             con.close()
 
     @contextmanager
-    def tx(self):
+    def tx(self, immediate: bool = True):
         with self.connect() as con:
-            con.execute("BEGIN IMMEDIATE")
+            con.execute("BEGIN IMMEDIATE" if immediate else "BEGIN DEFERRED")
             yield con
 
     def migrate(self):
