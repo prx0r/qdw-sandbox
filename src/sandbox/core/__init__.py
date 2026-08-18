@@ -63,9 +63,11 @@ class Database:
             if version in applied:
                 continue
             sql = path.read_text()
-            with self.tx() as con:
+            # exec in separate connection to avoid executescript auto-commit conflicts
+            with self.connect() as con:
                 con.executescript(sql)
+            with self.connect() as con:
                 con.execute(
-                    "INSERT INTO schema_versions (version, name, applied_at) VALUES (?, ?, ?)",
+                    "INSERT OR IGNORE INTO schema_versions (version, name, applied_at) VALUES (?, ?, ?)",
                     (version, path.stem, __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()),
                 )

@@ -244,3 +244,51 @@ def allocate(need_id: str, req: AllocateRequest):
         req.expected_time_seconds, req.reason_codes,
     )
     return {"allocation_id": alloc.allocation_id, "status": "allocated"}
+
+
+# ── R2 Storage endpoints ─────────────────────────────────────────────────
+
+
+@app.get("/r2/status")
+def r2_status():
+    r2 = _get_system().r2
+    return {"configured": r2.is_configured(), "bucket": r2.bucket, "endpoint": r2.endpoint}
+
+
+@app.post("/r2/upload")
+async def r2_upload(key: str, data: bytes):
+    r2 = _get_system().r2
+    if not r2.is_configured():
+        return {"error": "r2 not configured"}
+    result = await r2.upload(key, data)
+    return result
+
+
+@app.get("/r2/download/{key:path}")
+async def r2_download(key: str):
+    r2 = _get_system().r2
+    if not r2.is_configured():
+        return {"error": "r2 not configured"}
+    data = await r2.download(key)
+    from fastapi.responses import Response
+    return Response(content=data)
+
+
+@app.delete("/r2/{key:path}")
+async def r2_delete(key: str):
+    r2 = _get_system().r2
+    if not r2.is_configured():
+        return {"error": "r2 not configured"}
+    result = await r2.delete(key)
+    return result
+
+
+@app.head("/r2/{key:path}")
+async def r2_head(key: str):
+    r2 = _get_system().r2
+    if not r2.is_configured():
+        return {"error": "r2 not configured"}
+    info = await r2.head(key)
+    if info is None:
+        return {"error": "not_found"}
+    return info

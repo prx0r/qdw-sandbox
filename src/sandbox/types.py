@@ -271,3 +271,273 @@ class BountyCertificate:
     ledger_root: str
     source_commit: str
     issued_at: str = field(default_factory=utc_now)
+
+
+# ── Semantic Core Types ───────────────────────────────────────────────────
+
+
+class OntologyKind(enum.Enum):
+    PREDICATE = "predicate"
+    DIMENSION = "dimension"
+    STATE_TYPE = "state_type"
+    EVENT_TYPE = "event_type"
+    TENSION_TYPE = "tension_type"
+    OBJECT_TYPE = "object_type"
+    PRODUCT_FORM = "product_form"
+    EVIDENCE_ROLE = "evidence_role"
+    RELATION_TYPE = "relation_type"
+
+
+class SemanticObjectType(enum.Enum):
+    QUESTION = "question"
+    IDEA = "idea"
+    DISCOVERY = "discovery"
+    DECISION = "decision"
+    GOAL = "goal"
+    COMMITMENT = "commitment"
+    ACHIEVEMENT = "achievement"
+    HYPOTHESIS = "hypothesis"
+    PREFERENCE = "preference"
+
+
+class ThreadStatus(enum.Enum):
+    OPEN = "open"
+    CLOSED = "closed"
+    ABANDONED = "abandoned"
+
+
+@dataclass(frozen=True)
+class Space:
+    space_id: str
+    kind: str
+    owner_entity_id: str = ""
+    default_visibility: str = "private"
+    policy_id: str = ""
+    created_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class OntologyTerm:
+    term_id: str
+    kind: OntologyKind
+    canonical_key: str
+    label: str
+    parent_term_id: str = ""
+    schema_version: str = "1.0"
+    status: str = "active"
+    created_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class ObjectEdge:
+    edge_id: str
+    subject_type: str
+    subject_id: str
+    predicate_term_id: str
+    object_type: str
+    object_id: str
+    supporting_claim_id: str = ""
+    confidence: float = 1.0
+    created_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class SpaceEvent:
+    event_id: str
+    space_id: str
+    event_type_term_id: str
+    subject_entity_id: str
+    object_entity_id: str = ""
+    started_at: str = ""
+    ended_at: str = ""
+    attributes: dict[str, Any] = field(default_factory=dict)
+    confidence: float = 1.0
+    created_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class State:
+    state_id: str
+    space_id: str
+    subject_entity_id: str
+    dimension_term_id: str
+    value: dict[str, Any] = field(default_factory=dict)
+    valid_from: str = ""
+    valid_until: str = ""
+    confidence: float = 1.0
+    created_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class SemanticObject:
+    object_id: str
+    space_id: str
+    object_type_term_id: SemanticObjectType
+    canonical_key: str
+    subject_entity_id: str = ""
+    content: dict[str, Any] = field(default_factory=dict)
+    first_observed_at: str = ""
+    last_observed_at: str = ""
+    status: str = "active"
+    confidence: float = 1.0
+    created_at: str = field(default_factory=utc_now)
+    updated_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class Tension:
+    tension_id: str
+    space_id: str
+    subject_segment: str
+    dimension: str
+    observed_state_concept: str
+    desired_state_concept: str
+    prevalence: float = 0.0
+    recurrence: float = 0.0
+    severity: float = 0.0
+    persistence: float = 0.0
+    confidence: float = 0.0
+    evidence: dict[str, Any] = field(default_factory=dict)
+    status: str = "active"
+    created_at: str = field(default_factory=utc_now)
+    updated_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class Thread:
+    thread_id: str
+    space_id: str
+    thread_type_term_id: str
+    primary_subject_id: str
+    started_at: str = ""
+    ended_at: str = ""
+    status: ThreadStatus = ThreadStatus.OPEN
+    confidence: float = 1.0
+    created_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class ThreadMember:
+    thread_id: str
+    member_type: str
+    member_id: str
+    role_term_id: str = ""
+    ordinal: int = 0
+
+
+# ── Requirements & Fulfillment ────────────────────────────────────────────
+
+
+class RequirementType(enum.Enum):
+    EVIDENCE = "evidence"
+    TASK = "task"
+    DATA = "data"
+    ASSET = "asset"
+    HUMAN = "human"
+
+
+class FulfillmentStatus(enum.Enum):
+    PROPOSED = "proposed"
+    SELECTED = "selected"
+    RUNNING = "running"
+    COMPLETED = "completed"
+    FAILED = "failed"
+
+
+@dataclass(frozen=True)
+class Requirement:
+    requirement_id: str
+    requester_type: str
+    requester_id: str
+    requirement_type: RequirementType
+    spec: dict[str, Any]
+    acceptance_spec_hash: str = ""
+    max_cost_usd: float = 0.0
+    deadline: str = ""
+    space_id: str = "world:public"
+    status: str = "open"
+    created_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class Fulfillment:
+    fulfillment_id: str
+    requirement_id: str
+    provider_type: str
+    provider_id: str
+    estimated_cost: float = 0.0
+    expected_success: float = 0.0
+    expected_evidence_quality: float = 0.0
+    selected_at: str = ""
+    status: FulfillmentStatus = FulfillmentStatus.PROPOSED
+    created_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class HumanSubmission:
+    submission_id: str
+    action_id: str
+    contributor_entity_id: str
+    artifact_ref: str = ""
+    status: str = "submitted"
+    verification_receipt_id: str = ""
+    observation_id: str = ""
+    claim_id: str = ""
+    submitted_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class DataGrant:
+    grant_id: str
+    owner_entity_id: str
+    source_space_id: str
+    grantee_entity_id: str
+    purpose_term_id: str
+    scope: dict[str, Any] = field(default_factory=dict)
+    allowed_operations: tuple[str, ...] = ()
+    raw_access: bool = False
+    training_allowed: bool = False
+    redistribution_allowed: bool = False
+    valid_from: str = ""
+    valid_until: str = ""
+    revoked_at: str = ""
+    rights_backend: str = "native_local"
+    created_at: str = field(default_factory=utc_now)
+
+
+# ── Reports ───────────────────────────────────────────────────────────────
+
+
+@dataclass(frozen=True)
+class ReportDefinition:
+    report_type: str
+    version: str
+    query_spec: dict[str, Any] = field(default_factory=dict)
+    schema: dict[str, Any] = field(default_factory=dict)
+    created_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class ReportRun:
+    report_run_id: str
+    report_type: str
+    space_id: str
+    period_start: str = ""
+    period_end: str = ""
+    input_snapshot_hash: str = ""
+    output_artifact_hash: str = ""
+    status: str = "pending"
+    created_at: str = field(default_factory=utc_now)
+
+
+@dataclass(frozen=True)
+class SharePackage:
+    share_id: str
+    source_space_id: str
+    audience_type: str
+    policy_snapshot_hash: str = ""
+    selection_spec: dict[str, Any] = field(default_factory=dict)
+    artifact_hash: str = ""
+    expires_at: str = ""
+    revoked_at: str = ""
+    created_at: str = field(default_factory=utc_now)

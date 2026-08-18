@@ -1,0 +1,5 @@
+tests/test_checks.py: 16
+tests/test_receipts_lock.py: 2
+tests/test_review_certificate.py: 3
+tests/test_scanner_policy.py: 5
+
